@@ -14,8 +14,18 @@
 
 // While Loop
 
+var i = 0;
+
+while (i < 5){
+  console.log("hello")
+  i++
+}
+
 
 // For Loop
+for (i=0; i<5; i++){
+  console.log("hello")
+}
 
 
 
@@ -30,6 +40,17 @@
 // METHOD ONE
 // While Loop
 
+var i = 1;
+
+while (i < 25){
+  console.log(i);
+  i = i + 2;
+}
+
 
 // METHOD TWO
 // For Loop
+
+for (i=1; i<=25; i=i+2){
+  console.log(i);
+}
