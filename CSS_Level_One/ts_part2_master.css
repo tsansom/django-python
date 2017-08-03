@@ -1,0 +1,20 @@
+body{
+  background: url(https://www.taylorguitars.com/sites/default/files/TaylorGuitars-New-for-17-Browse.jpg);
+  background-repeat: no-repeat;
+}
+
+div{
+  background-color: blue;
+  border-color: red;
+  border-width: 5px;
+  border-style: double;
+}
+
+span{
+  background-color: lightgreen;
+  color: black;
+}
+
+p{
+  color: orange;
+}

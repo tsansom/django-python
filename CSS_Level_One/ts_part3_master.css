@@ -1,0 +1,31 @@
+/*Classes are referenced with a . in front*/
+.firstDiv{
+  color: blue;
+}
+
+.secondDiv{
+  color: red;
+}
+
+/*IDs are referenced with a # in front*/
+#singledout{
+  color: green;
+  text-decoration: line-through;
+}
+
+/*styling adjascent siblings*/
+/*Select all unordered list next to an h3 heading*/
+h3 + ul{
+  border: 4px dotted purple;
+}
+
+/*styling descendants*/
+li a{
+  color: red;
+}
+
+/*styling attributes*/
+li a[href="www.google.com"]{
+  color: orange;
+  border: 5px solid black;
+}

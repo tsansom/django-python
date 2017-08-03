@@ -1,0 +1,27 @@
+/*This is a comment in css*/
+
+/*
+Basic Format
+selected tag{
+  property: value;
+}
+*/
+
+/*google search for color picker to get hex and rgb codes*/
+
+h1{
+  color: blue;
+}
+
+li{
+  color: rgb(75,200,10);
+}
+
+p{
+  color: #d17b1f;
+}
+
+/*rgba is rgb plus alpha (transparency)*/
+h4{
+  color: rgba(100, 75, 0, 0.5);
+}

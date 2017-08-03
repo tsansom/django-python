@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Actions and Labels</title>
+  </head>
+  <body>
+    <h1>Actions and Labels</h1><hr>
+
+    <form action="https://www.google.com" method="get">
+      <p>Enter Email:</p>
+      <input type="email" name="useremail" value=""><br>
+      <input type="password" name="" value=""><br>
+      <input type="submit" name="" value="Submit">
+    </form><br><hr>
+
+    <!--
+    Below is the wrong way to do labels because it's
+    repeated every time
+    -->
+    <form>
+      <label>
+        Enter Text:
+        <input type="text" name="" value="block one">
+      </label>
+      <label>
+        Enter Text:
+        <input type="text" name="" value="block two">
+      </label>
+    </form><br><hr>
+
+    <!-- This is a better way to do labels -->
+    <form>
+      <label for="userinput">Enter Input</label>
+      <input id="userinput" type="text" name="" placeholder="Enter Text Here" required>
+    </form><br><hr>
+
+    <!-- Required fields -->
+    <form>
+      <input type="text" name="" placeholder="Not Required">
+      <input type="text" name="" placeholder="Required" required>
+      <input type="submit" name="" value="Submit">
+    </form>
+
+  </body>
+</html>

@@ -1,0 +1,39 @@
+# How the web works?
+* start of by typing url into browser
+* computer sends request as packet
+  * includes ip address of website you're looking for
+* sends request through wires or satellite which eventually links to your isp
+* your isp will then reroute the request to the appropriate server location
+* once your request reaches the server it can send back the website you asked for
+  * full website with content too big to send back with a single packet
+  * so server sends the website in multiple packets
+  * packets don't care how they get to you, just final location
+    * may take different paths
+* once the packets reach you they reassemble to show you the website
+
+
+# What does Full-Stack mean?
+Front End - what you see as a user
+Back End - the technology used to actually decide what to show you on the front end
+
+## Front-End
+Revolves around three technologies
+* HTML
+  * HyperText Markup language
+  * every website will have HTML, it's the structure of the page
+* CSS
+  * Cascading Style Sheets
+  * actual styling of the website (colors, fonts, etc)
+  * not mandatory but almost all sites have it
+* Javascript
+  * allows you to add interactivity including programming logic
+* will also hear about jQuery and Bootstrap but these are built using the previous three
+
+
+## Back-End
+This is where a multitude of options pop up
+
+The Back-End has three components
+* Language (Python)
+* Framework (Django)
+* Database (SQLite)
