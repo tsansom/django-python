@@ -30,8 +30,6 @@ function checkWinner() {
     }
 }
 
-
-
 //working don't touch
 function diagonalWinner() {
     for (row=0; row<6; row++) {

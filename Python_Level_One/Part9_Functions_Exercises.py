@@ -21,8 +21,14 @@
 # arrayCheck([1, 1, 2, 1, 2, 3]) → True
 
 def arrayCheck(nums):
-    # CODE GOES HERE
+    for i in range(len(nums)-2):
+        if nums[i:i+3] == [1,2,3]:
+            return True
+    return False
 
+print(arrayCheck([1,1,2,3,1]))
+print(arrayCheck([1,1,2,4,1]))
+print(arrayCheck([1,1,2,1,2,3]))
 
 #####################
 ## -- PROBLEM 2 -- ##
@@ -38,7 +44,11 @@ def arrayCheck(nums):
 # stringBits('Heeololeo') → 'Hello'
 
 def stringBits(str):
-  # CODE GOES HERE
+    return str[::2]
+
+print(stringBits('Hello'))
+print(stringBits('Hi'))
+print(stringBits('Heeololeo'))
 
 
 #####################
@@ -59,7 +69,21 @@ def stringBits(str):
 
 
 def end_other(a, b):
-  # CODE GOES HERE
+    if len(a) > len(b):
+        if a[-1*len(b):].lower() == b.lower():
+            return True
+    elif len(b) > len(a):
+        if b[-1*len(a):].lower() == a.lower():
+            return True
+    else:
+        if a.lower() == b.lower():
+            return True
+    return false
+
+print(end_other('Hiabc', 'abc'))
+print(end_other('ABc', 'HiaBC'))
+print(end_other('abc', 'abXabC'))
+
 
 #####################
 ## -- PROBLEM 4 -- ##
@@ -73,8 +97,12 @@ def end_other(a, b):
 # doubleChar('Hi-There') → 'HHii--TThheerree'
 
 def doubleChar(str):
-  # CODE GOES HERE
+    tmp = [s*2 for s in str]
+    return ''.join(tmp)
 
+print(doubleChar('hello'))
+print(doubleChar('AAbb'))
+print(doubleChar('Hi-There'))
 
 #####################
 ## -- PROBLEM 5 -- ##
@@ -98,9 +126,18 @@ def doubleChar(str):
 # no_teen_sum(2, 1, 14) → 3
 
 def no_teen_sum(a, b, c):
-  # CODE GOES HERE
+  return fix_teen(a) + fix_teen(b) + fix_teen(c)
+
 def fix_teen(n):
-  # CODE GOES HERE
+  if n in [13, 14, 17, 18, 19]:
+      return 0
+  else:
+      return n
+
+print(no_teen_sum(1, 2, 3))
+print(no_teen_sum(2, 13, 1))
+print(no_teen_sum(2, 1, 14))
+print(no_teen_sum(1, 6, 15))
 
 #####################
 ## -- PROBLEM 6 -- ##
@@ -115,4 +152,8 @@ def fix_teen(n):
 # count_evens([1, 3, 5]) → 0
 
 def count_evens(nums):
-  # CODE GOES HERE
+    return sum([n%2==0 for n in nums])
+
+print(count_evens([2, 1, 2, 3, 4]))
+print(count_evens([2, 2, 0]))
+print(count_evens([1, 3, 5]))
