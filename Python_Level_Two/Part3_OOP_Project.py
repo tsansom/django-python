@@ -29,7 +29,7 @@
 from random import shuffle
 
 # Two useful variables for creating Cards.
-SUITE = 'H D S C'.split()
+SUIT = 'H D S C'.split()
 RANKS = '2 3 4 5 6 7 8 9 10 J Q K A'.split()
 
 class Deck:
@@ -39,7 +39,8 @@ class Deck:
     the players. It will use SUITE and RANKS to create the deck. It should also
     have a method for splitting/cutting the deck in half and Shuffling the deck.
     """
-    pass
+    def __init__(self, SUIT, RANKS):
+        DECK = shuffle(['-'.join(a) for a in itertools.product(RANKS, SUIT)])
 
 class Hand:
     '''
