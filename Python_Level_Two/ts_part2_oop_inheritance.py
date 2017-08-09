@@ -20,6 +20,7 @@ class Dog(Animal):
     def bark(self):
         print('Woof!')
 
+    # This overwrites the previous method
     def eat(self):
         print('Dog Eating')
 
