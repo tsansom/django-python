@@ -1,12 +1,24 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
     <head>
         <meta charset="utf-8">
-        <title>First App</title>
+        <title>Guitar Page</title>
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="{% static "css/mystyle.css" %}">
     </head>
     <body>
-        <h1>Hello this is index.html!</h1>
-        {{ insert_me }}
+        <div class="container" align="center">
+            <div class="jumbotron">
 
+
+            <h1>Hello this is index.html!</h1>
+            {{ insert_me }}
+
+            </div>
+
+            <img src="{% static "images/guitar.jpg" %}" alt="Uh Oh, could not find image!">
+
+        </div>
     </body>
 </html>
