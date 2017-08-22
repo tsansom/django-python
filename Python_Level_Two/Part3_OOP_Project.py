@@ -27,34 +27,75 @@
 # https://en.wikipedia.org/wiki/War_(card_game)
 
 from random import shuffle
+import itertools
 
 # Two useful variables for creating Cards.
-SUIT = 'H D S C'.split()
-RANKS = '2 3 4 5 6 7 8 9 10 J Q K A'.split()
+SUIT = 'Hearts Diamonds Spades Clubs'.split()
+RANKS = '2 3 4 5 6 7 8 9 10 Jack Queen King Ace'.split()
 
-class Deck:
+class Deck():
     """
     This is the Deck Class. This object will create a deck of cards to initiate
     play. You can then use this Deck list of cards to split in half and give to
     the players. It will use SUITE and RANKS to create the deck. It should also
     have a method for splitting/cutting the deck in half and Shuffling the deck.
     """
-    def __init__(self, SUIT, RANKS):
-        DECK = shuffle(['-'.join(a) for a in itertools.product(RANKS, SUIT)])
+    def __init__(self):
+        print('Creating New Deck...')
+        self.allcards = [' of '.join(a) for a in itertools.product(RANKS, SUIT)]
 
-class Hand:
+    def shuffle(self):
+        print('Shuffling Cards...')
+        shuffle(self.allcards)
+
+    def split_in_half(self):
+        print('Dealing Cards...')
+        return (self.allcards[:26], self.allcards[26:])
+
+class Hand():
     '''
     This is the Hand class. Each player has a Hand, and can add or remove
     cards from that hand. There should be an add and remove card method here.
     '''
-    pass
+    def __init__(self, cards):
+        self.cards = cards
 
-class Player:
+    def __len__(self):
+        return len(self.cards)
+
+    def remove_card(self):
+        return self.cards.pop()
+
+    def add_card(self, card):
+        return self.cards.append(card)
+
+class Player():
     """
     This is the Player class, which takes in a name and an instance of a Hand
     class object. The Payer can then play cards and check if they still have cards.
     """
-    pass
+    def __init__(self, name, hand):
+        self.name = name
+        self.hand = hand
+
+    def has_cards(self):
+        return len(self.hand) != 0
+
+    def play_card(self):
+        drawn_card = self.hand.remove_card()
+        print('->{} has played the {}'.format(self.name, drawn_card)),
+        return drawn_card
+
+    def remove_war_cards(self, num_cards=4):
+        war_cards = []
+        # if len(self.hand) < 4:
+        #     for x in range(len(self.hand)):
+        #         war_cards.append(self.hand.remove_card())
+        #     return war_cards
+        # else:
+        for x in range(num_cards):
+            war_cards.append(self.hand.remove_card())
+        return war_cards
 
 
 ######################
@@ -62,4 +103,59 @@ class Player:
 ######################
 print("Welcome to War, let's begin...")
 
-# Use the 3 classes along with some logic to play a game of war!
+d = Deck()
+d.shuffle()
+p1cards, p2cards = d.split_in_half()
+
+computer = Player('Computer', Hand(p1cards))
+player = Player(input('Enter your name >> '), Hand(p2cards))
+# player = Player('T', Hand(p2cards))
+
+total_rounds = 0
+war_rounds = 0
+
+# This is there where the while loop will start
+
+while player.has_cards() and computer.has_cards():
+
+    print('\nHere are the stats so far:')
+    print('Total Rounds: {}\nWar Rounds: {}'.format(total_rounds, war_rounds))
+    print('{} has {} cards remaining\n{} has {} cards remaining'.format(player.name,
+                                                                        len(player.hand),
+                                                                        computer.name,
+                                                                        len(computer.hand)))
+
+    print('\nStarting new round:')
+    total_rounds += 1
+    cards_on_table = []
+
+    player_card = player.play_card()
+    computer_card = computer.play_card()
+
+    cards_on_table.extend((player_card, computer_card))
+
+    if RANKS.index(player_card.split()[0]) > RANKS.index(computer_card.split()[0]):
+        print('{} has the higher card'.format(player.name))
+        player.hand.add_card(computer_card)
+    elif RANKS.index(player_card.split()[0]) < RANKS.index(computer_card.split()[0]):
+        print('{} has the higher card'.format(computer.name))
+        computer.hand.add_card(player_card)
+    else:
+        war_rounds += 1
+        print('Cards ranks are the same: WAR TIME!')
+        min_cards_left = min(len(player.hand), len(computer.hand))
+        if min_cards_left < 4:
+            cards_to_draw = min_cards_left
+        else:
+            cards_to_draw = 4
+        cards_on_table.extend(player.remove_war_cards(cards_to_draw))
+        player_card = cards_on_table[-1]
+        cards_on_table.extend(computer.remove_war_cards(cards_to_draw))
+        computer_card = cards_on_table[-1]
+
+if player.has_cards():
+    print('\n----------------------\n\n{} is the WINNER!'.format(player.name))
+else:
+    print('\n----------------------\n\n{} is the WINNER! Better luck next time.'.format(computer.name))
+
+print('Total Rounds: {}\nWar Rounds: {}'.format(total_rounds, war_rounds))
