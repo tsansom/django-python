@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User List</title>
+    <link rel="stylesheet" href="{% static "css/mystyle.css" %}">
+  </head>
+  <body>
+    <h1>This is Django Project Two</h1>
+    <h2>Here are the list of users:</h2>
+
+    <div class="userlist">
+      {% if user_records %}
+        <table>
+          <ol>
+            {% for usr in user_records %}
+              <li>User Info</li>
+              <ul>
+                <li>First Name: {{ usr.first_name }}</li>
+                <li>Last Name: {{ usr.last_name }}</li>
+                <li>Last Name: {{ usr.email }}</li>
+              </ul>
+            {% endfor %}
+          </ol>
+        </table>
+      {% else %}
+        <p>NO USER RECORDS FOUND!</p>
+      {% endif %}
+    </div>
+
+  </body>
+</html>

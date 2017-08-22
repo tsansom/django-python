@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User List</title>
+  </head>
+  <body>
+    <h1>Here are the users for AppTwo:</h1>
+
+    {% if users %}
+    <ol>
+      {% for usr in users %}
+      <li>User Info:</li>
+      <ul>
+        <li>First Name: {{ usr.first_name }}</li>
+        <li>Last Name: {{ usr.last_name }}</li>
+        <li>Email: {{ usr.email }}</li>
+      </ul>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <p>NO USERS FOUND!</p>
+    {% endif %}
+  </body>
+</html>
